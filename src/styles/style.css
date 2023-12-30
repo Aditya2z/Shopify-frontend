@@ -1,0 +1,694 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Custom Styling Starts Here */
+
+/* My Resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* General Styles */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  max-width: 1370px;
+  width: 100%;
+  line-height: 1.5;
+}
+
+button,
+input,
+select,
+textarea,
+Link {
+  font-family: "Roboto", sans-serif;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 600;
+}
+
+img,
+audio,
+video {
+  width: 100%;
+}
+
+/* Variables */
+:root {
+  --primary: #3498db;
+  --secondary: #017732;
+  --tertiary: #e74c3c;
+  --background: #ecf0f1;
+}
+
+/* Containers */
+.container-90 {
+  max-width: 90%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Flex */
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.flex-10 {
+  flex: 0 1 10%;
+}
+
+.flex-20 {
+  flex: 0 1 20%;
+}
+
+.flex-24 {
+  flex: 0 1 24%;
+}
+
+.flex-32 {
+  flex: 0 1 32%;
+}
+
+.flex-49 {
+  flex: 0 1 49%;
+}
+
+.flex-74 {
+  flex: 0 1 74%;
+}
+
+/* Headings */
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.sub-heading {
+  font-size: 1.25rem;
+}
+
+.accent {
+  color: var(--primary);
+}
+
+.accent:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+/* .btn {
+  background: none;
+  font-size: .75rem;
+  font-weight: 500;
+  padding: 2px;
+  border-radius: 0.25rem;
+  text-decoration: underline;
+  color: rgba(0, 0, 0, .35);
+  margin-top: .5rem;
+}
+
+.btn:hover {
+  color: black;
+} */
+
+/* Tag button */
+/* .btn-1 {
+  text-decoration: none;
+  background: whitesmoke;
+  font-size: .75rem;
+  font-weight: 500;
+  padding: 2px 10px;
+  border-radius: 0.25rem;
+  color: black;
+  margin: .25rem;
+  height: 20px;
+  border-radius: 15px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.btn-1:hover {
+  color: rgb(116, 114, 114);
+  text-decoration: underline;
+} */
+
+/* Login Button */
+.btn-2 {
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-2:hover {
+  background: var(--secondary);
+  color: white;
+}
+
+/* Tag button type 2 */
+/* .btn-3 {
+  text-decoration: none;
+  background: white;
+  font-size: .75rem;
+  font-weight: 500;
+  padding: 2px 10px;
+  border-radius: 0.25rem;
+  color: rgba(0, 0, 0, .35);
+  margin: .25rem;
+  height: 30px;
+  border-radius: 15px;
+  min-width: 50px;
+  border: 1px solid rgba(0, 0, 0, .35);
+} */
+
+/* Logout button */
+.btn-4 {
+  background: var(--tertiary);
+  color: #fff;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: .925rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 600;
+  margin-left: 1rem;
+}
+
+.btn-4:hover {
+  background: var(--secondary);
+  color: white;
+  transition: all 200ms ease-in-out;
+}
+
+/* Edit and Delete buttons */
+.edit-btn,
+.delete-btn {
+  background: #5462ff;
+  color: #fff;
+  padding: 3px 5px;
+  box-shadow: 1px 1px 2px rgba(255, 255, 255, .2);
+  border: none;
+  border-radius: 5px;
+  font-size: .925rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 600;
+  margin-left: 1rem;
+}
+
+.delete-btn {
+  background-color: var(--tertiary);
+}
+
+.edit-btn:hover {
+  background: #2a3cff;
+  color: white;
+  transition: all 200ms ease-in-out;
+}
+
+.delete-btn:hover {
+  background: #ff0000;
+  color: white;
+  transition: all 200ms ease-in-out;
+}
+
+
+/* Header Styles */
+header {
+  padding: 10px 5%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, .05);
+  background-color: #ffffff;
+}
+
+.brand {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.nav-menu-item {
+  text-decoration: none;
+  color: rgba(0, 0, 0, .75);
+  font-weight: 500;
+  align-self: stretch;
+  margin: 0 .5rem;
+}
+
+.nav-menu-item:hover {
+  color: var(--primary);
+}
+
+.nav-menu-item.active {
+  border-bottom: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 1.1rem .5rem;
+  transition: all 100ms ease-in-out;
+}
+
+.header-avatar {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid rgba(0, 0, 0, .25);
+  border-radius: 50%;
+}
+
+/* Styling for ProductCard */
+.product-card {
+  width: 350px;
+  height: 400px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  margin: 1rem;
+  text-align: center;
+  padding-bottom: 8px;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card figure {
+  width: 100%;
+  height: 60%;
+  /* Adjust the height as needed */
+  position: relative;
+  background: rgba(0, 0, 0, .1);
+}
+
+.product-card img {
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px 8px 0 0;
+}
+
+.product-heading {
+  min-height: 3rem;
+}
+
+.product-details {
+  padding: .5rem;
+  text-align: left;
+  height: 30%;
+  /* Adjust the height as needed */
+  box-sizing: border-box;
+}
+
+.product-details h3 {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.product-details p {
+  margin: 6px 0;
+  font-size: 0.9rem;
+}
+
+.product-details button {
+  margin: 0 auto;
+}
+
+/* All Forms styles */
+/* Login, new article and Signup form styles */
+.login-container,
+.signup-container {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  max-width: 500px;
+  margin: 50px auto;
+}
+
+.login-heading,
+.signup-heading {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.error {
+  color: #ff0000;
+  font-size: 14px;
+  text-align: left;
+}
+
+
+/* Like Styles */
+.like {
+  border: 1px solid rgba(0, 0, 0, .25);
+  padding: 2px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+  min-width: 2rem;
+  font-size: .75rem;
+  background-color: white;
+  justify-content: center;
+  align-items: baseline;
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+}
+
+.like.active {
+  background-color: white;
+  color: var(--tertiary);
+}
+
+/* cart-styles */
+.cart-sidebar {
+  position: fixed;
+  right: 20px;
+  z-index: 99;
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, .9);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, .75),
+    -2px -2px 2px rgba(0, 0, 0, .75);
+  border-radius: 10px;
+}
+
+/* Styling for Cart component */
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background-color: #dddddd;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  padding: 20px;
+  z-index: 999;
+  min-width: 40%;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: .5rem;
+}
+
+.cart-header h2 {
+  font-size: 1.5em;
+}
+
+.cart-total {
+  font-size: 1.2em;
+  color: #3498db;
+}
+
+.cart-header .close-btn {
+  background: none;
+}
+
+.cart-sidebar .close-btn:hover {
+  text-decoration: underline;
+  transition: all 250ms ease-in-out;
+}
+
+/* Styling for Cart item */
+.cart-item {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 12px;
+}
+
+.cart-item h4 {
+  text-align: left;
+  margin: 0;
+  font-size: 1.2rem;
+  max-width: 50%;
+}
+
+.cart-item h3 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #3498db;
+}
+
+.cart-item-control {
+  text-align: right;
+}
+
+.quantity-control {
+  border: 1px solid rgba(0, 0, 0, .1);
+}
+
+.quantity-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: .75rem;
+  font-weight: 900;
+  padding: 0 5px;
+}
+
+.quantity-btn:hover {
+  opacity: .85;
+}
+
+.close-btn {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.product-price {
+  text-align: right;
+}
+
+.small-text {
+  font-size: .75rem;
+  color: #777;
+}
+
+.cart-total {
+  font-weight: 800;
+  margin-right: 10px;
+  text-align: right;
+}
