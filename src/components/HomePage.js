@@ -33,9 +33,15 @@ function HomePage(props) {
         setIsVerifying(false);
       })
       .catch((errorPromise) => {
-        errorPromise.then((errorObj) => {
-          setError(errorObj);
-        });
+        // Check if the error is a response object
+        if (error instanceof Response) {
+          error.json().then((errorObj) => {
+            setError(errorObj);
+          });
+        } else {
+          // If it's not a response object, handle the error accordingly
+          setError({ message: "Network error or server unreachable" });
+        }
       });
   };
 

@@ -1,4 +1,4 @@
-const RootUrl = "/api";
+const RootUrl = "http://3.110.136.26:5000/api";
 
 const productUrl = `${RootUrl}/products`;
 const usersUrl = `${RootUrl}/users`;
