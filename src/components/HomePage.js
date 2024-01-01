@@ -12,6 +12,7 @@ function HomePage(props) {
   const [cartProducts, setCartProducts] = useState(null);
   const [error, setError] = useState(null);
   const [isVerifying, setIsVerifying] = useState(true);
+  const [isCartLoading, setIsCartLoading] = useState(false);
 
   const storageKey = localStorage.getItem(localStorageKey) || "";
 
@@ -70,6 +71,7 @@ function HomePage(props) {
               setError={setError}
               setCartProducts={setCartProducts}
               isLoggedIn={isLoggedIn}
+              setIsCartLoading={setIsCartLoading}
             />
           );
         })}
@@ -80,6 +82,8 @@ function HomePage(props) {
           isLoggedIn={isLoggedIn}
           cartProducts={cartProducts}
           setCartProducts={setCartProducts}
+          isCartLoading={isCartLoading}
+          setIsCartLoading={setIsCartLoading}
         />
       )}
     </div>

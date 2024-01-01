@@ -1,36 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import Like from "./Like";
-import { localStorageKey } from "../utils/constant";
+import { localStorageKey, cartUrl } from "../utils/constant";
+import { useNavigate } from "react-router-dom";
 
 function ProductCard(props) {
-  const { product, setShowCart, setError, setCartProducts, isLoggedIn } = props;
+  const {
+    product,
+    setShowCart,
+    setError,
+    setCartProducts,
+    isLoggedIn,
+    setIsCartLoading,
+  } = props;
 
   const storageKey = localStorage.getItem(localStorageKey) || "";
+  const navigate = useNavigate();
 
   // Function to add a product to the user's cart
   const addToCart = (productId) => {
-    setShowCart(true);
-    fetch(`/api/cart/${productId}`, {
-      method: "POST",
-      headers: {
-        Authorization: storageKey,
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        throw res.json();
+    setIsCartLoading(true);
+    if (isLoggedIn) {
+      setShowCart(true);
+      fetch(`${cartUrl}/${productId}`, {
+        method: "POST",
+        headers: {
+          Authorization: storageKey,
+        },
       })
-      .then((data) => {
-        setCartProducts(data.cart.items);
-        setShowCart(true);
-      })
-      .catch((errorPromise) => {
-        errorPromise.then((errorObj) => {
-          setError(errorObj);
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          throw res.json();
+        })
+        .then((data) => {
+          setCartProducts(data.cart.items);
+          setIsCartLoading(false);
+        })
+        .catch((errorPromise) => {
+          errorPromise.then((errorObj) => {
+            setError(errorObj);
+          });
+          setIsCartLoading(false);
         });
-      });
+    } else {
+      setIsCartLoading(false);
+      navigate("/login");
+    }
   };
 
   return (

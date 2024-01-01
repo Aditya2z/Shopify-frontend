@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import CartItem from "./CartItem";
 import Loader from "./loader/Loader";
 import { cartUrl, localStorageKey } from "../utils/constant";
 
 function CartSidebar(props) {
-  const [isLoading, setIsLoading] = useState(false);
-
-  const { setShowCart, setError, isLoggedIn, cartProducts, setCartProducts } =
-    props;
+  const {
+    setShowCart,
+    setError,
+    isLoggedIn,
+    cartProducts,
+    setCartProducts,
+    isCartLoading,
+    setIsCartLoading,
+  } = props;
 
   const storageKey = localStorage.getItem(localStorageKey);
 
@@ -22,7 +27,7 @@ function CartSidebar(props) {
   };
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsCartLoading(true);
     if (isLoggedIn) {
       fetch(`${cartUrl}`, {
         method: "GET",
@@ -38,7 +43,7 @@ function CartSidebar(props) {
         })
         .then((data) => {
           setCartProducts(data.cart.items);
-          setIsLoading(false);
+          setIsCartLoading(false);
         })
         .catch((errorPromise) => {
           errorPromise.then((errorText) => {
@@ -46,13 +51,25 @@ function CartSidebar(props) {
           });
         });
     } else {
-      setIsLoading(false);
+      setIsCartLoading(false);
     }
   }, []);
 
-  if (isLoading) {
+  if (isCartLoading) {
     return (
       <aside className="cart-sidebar">
+        <div className="cart-header flex justify-between align-center">
+          <h2>My Cart:</h2>
+          <button
+            className="close-btn"
+            type="button"
+            onClick={() => {
+              setShowCart(false);
+            }}
+          >
+            Close❌
+          </button>
+        </div>
         <Loader />;
       </aside>
     );
@@ -99,6 +116,7 @@ function CartSidebar(props) {
           setCartProducts={setCartProducts}
           setError={setError}
           key={index}
+          {...props}
         />
       ))}
       <p className="cart-total">Total: ${calculateTotal()}</p>

@@ -4,13 +4,15 @@ import { localStorageKey } from "../utils/constant";
 import "../styles/style.css";
 
 function Header(props) {
-  const { isLoggedIn, updateUser, user, setShowCart } = props;
+  const { isLoggedIn, updateUser, user, setShowCart, setIsVerifying } = props;
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    setIsVerifying(true);
     localStorage.removeItem(localStorageKey);
     updateUser(null);
     navigate(0);
+    setIsVerifying(false);
   };
 
   return (

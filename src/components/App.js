@@ -8,10 +8,8 @@ import NoMatch from "./NoMatch";
 import AlreadyLoggedIn from "./AlreadyAuthenticated";
 import FullPageLoader from "./loader/FullPageLoader";
 import ErrorPage from "./ErrorPage";
-import {
-  userVerifyUrl,
-  localStorageKey,
-} from "../utils/constant";
+import Footer from "./Footer";
+import { userVerifyUrl, localStorageKey } from "../utils/constant";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -73,6 +71,7 @@ function App() {
         user={user}
         setShowCart={setShowCart}
         updateUser={updateUser}
+        setIsVerifying={setIsVerifying}
       />
       <Routes>
         <Route
@@ -97,7 +96,12 @@ function App() {
             isLoggedIn ? (
               <AlreadyLoggedIn />
             ) : (
-              <LoginPage updateUser={updateUser} setError={setError}/>
+              <LoginPage
+                updateUser={updateUser}
+                setError={setError}
+                isVerifying={isVerifying}
+                setIsVerifying={setIsVerifying}
+              />
             )
           }
         />
@@ -107,6 +111,7 @@ function App() {
         />
         <Route path="*" element={<NoMatch />} />
       </Routes>
+      <Footer />
     </>
   );
 }

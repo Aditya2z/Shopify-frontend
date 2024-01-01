@@ -692,3 +692,19 @@ label {
   margin-right: 10px;
   text-align: right;
 }
+
+/* Foooter styles */
+.footer {
+  background-color: var(--primary);
+  color: rgb(230, 230, 230);
+  padding: 1rem 0;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.footer p {
+  text-align: center;
+}
+.login-container {
+  margin-bottom: 9.25rem;
+}

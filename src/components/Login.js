@@ -10,9 +10,8 @@ function LoginPage(props) {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [otherError, setOtherError] = useState("");
-  const [loading, setLoading] = useState(false);
 
-  const { updateUser, setError } = props;
+  const { updateUser, setError, isVerifying, setIsVerifying } = props;
   const navigate = useNavigate();
 
   const handleInputChange = (event) => {
@@ -62,7 +61,7 @@ function LoginPage(props) {
     const isValid = validateForm();
 
     if (isValid) {
-      setLoading(true);
+      setIsVerifying(true);
 
       fetch(`${usersUrl}/login`, {
         method: "POST",
@@ -88,12 +87,12 @@ function LoginPage(props) {
         });
         })
         .finally(() => {
-          setLoading(false);
+          setIsVerifying(false);
         });
     }
   };
 
-  if (loading) {
+  if (isVerifying) {
     return <Loader />;
   }
 

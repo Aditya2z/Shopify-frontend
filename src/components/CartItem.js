@@ -1,13 +1,21 @@
-import React from "react";
-import { localStorageKey } from "../utils/constant";
+import React, { useEffect, useState } from "react";
+import { cartUrl, localStorageKey } from "../utils/constant";
 
 function CartItem(props) {
-  const { setShowCart, productObj, setCartProducts, setError } = props;
+  const [productQuantity, setQuantity] = useState(0);
+
+  const {
+    setShowCart,
+    productObj,
+    setCartProducts,
+    setError,
+    setIsCartLoading,
+  } = props;
   const storageKey = localStorage.getItem(localStorageKey);
 
-  // Function to increase the quantity of a product in the user's cart
   const increaseQuantity = (productId) => {
-    return fetch(`/api/cart/increase/${productId}`, {
+    setQuantity((prevProductQuantity) => prevProductQuantity + 1);
+    return fetch(`${cartUrl}/increase/${productId}`, {
       method: "PUT",
       headers: {
         Authorization: storageKey,
@@ -29,9 +37,9 @@ function CartItem(props) {
       });
   };
 
-  // Function to decrease the quantity of a product in the user's cart
   const decreaseQuantity = (productId) => {
-    return fetch(`/api/cart/decrease/${productId}`, {
+    setQuantity((prevProductQuantity) => prevProductQuantity - 1);
+    return fetch(`${cartUrl}/decrease/${productId}`, {
       method: "PUT",
       headers: {
         Authorization: storageKey,
@@ -53,9 +61,9 @@ function CartItem(props) {
       });
   };
 
-  // Function to remove an item from the user's cart
   const removeFromCart = (productId) => {
-    return fetch(`/api/cart/${productId}`, {
+    setIsCartLoading(true);
+    fetch(`${cartUrl}/${productId}`, {
       method: "DELETE",
       headers: {
         Authorization: storageKey,
@@ -69,14 +77,19 @@ function CartItem(props) {
       })
       .then((data) => {
         setCartProducts(data.cart.items);
+        setIsCartLoading(false);
       })
       .catch((errorPromise) => {
-        console.log(errorPromise);
+        setIsCartLoading(false);
         errorPromise.then((errorObj) => {
           setError(errorObj);
         });
       });
   };
+
+  useEffect(() => {
+    setQuantity(quantity);
+  }, []);
 
   if (!productObj) {
     return (
@@ -132,7 +145,7 @@ function CartItem(props) {
           >
             -
           </button>
-          <p>{quantity}</p>
+          <p>{productQuantity}</p>
           <button
             className="quantity-btn"
             onClick={() => increaseQuantity(_id)}
