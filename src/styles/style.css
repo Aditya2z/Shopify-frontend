@@ -742,6 +742,7 @@ label {
 
   .hamburger-menu {
     display: block;
+    position: relative;
   }
 
   .hamburger-icon {
@@ -778,6 +779,37 @@ label {
 
   .nav-menu {
     display: none;
+  }
+
+  .hamburger-nav-menu {
+    position: absolute;
+    background-color: var(--background);
+    padding: 5px;
+    right: 0;
+    z-index: 99;
+    border-radius: 5px;
+    width: 10rem;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .1), -2px -2px 2px rgba(0, 0, 0, .1);
+  }
+
+  .hamburger-nav-menu li {
+    padding: 2px 5px;
+    margin: 5px;
+    background-color: #ffffff;
+  }
+
+  .hamburger-nav-menu li button {
+    background-color: #ffffff;
+    color: var(--tertiary);
+    margin: 0;
+  }
+
+  .noauth-nav-menu {
+    display: flex;
+  }
+
+  .cart-sidebar {
+    min-width: 100%;
   }
 }
 

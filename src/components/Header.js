@@ -37,7 +37,7 @@ function Header(props) {
 
 function NonAuthHeader() {
   return (
-    <ul className="nav-menu flex justify-between align-center">
+    <ul className="nav-menu noauth-nav-menu flex justify-between align-center">
       <li>
         <NavLink className="nav-menu-item" activeclassname="active" to="/login">
           Sign in
@@ -73,10 +73,10 @@ function AuthHeader(props) {
           <span></span>
           <span></span>
         </div>
-        <ul className="hamburger-nav-menu">
+        <ul className={showMenu ? `hamburger-nav-menu` : `nav-menu`}>
           <li>
             <Link
-              className="nav-menu-item"
+              className="hamburger-nav-menu-item"
               to="/"
               onClick={() => {
                 setShowCart(true);
@@ -86,7 +86,7 @@ function AuthHeader(props) {
             </Link>
           </li>
           <li>
-            <Link className="nav-menu-item flex align-center" to={`/`}>
+            <Link className="hamburger-nav-menu-item flex align-center" to={`/`}>
               {user.name}
             </Link>
           </li>
