@@ -59,7 +59,7 @@ function HomePage(props) {
   }
 
   return (
-    <div className="product-list flex wrap container-90">
+    <div className="product-list container-90">
       {products &&
         products.map((product) => {
           return (
