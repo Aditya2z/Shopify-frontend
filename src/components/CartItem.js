@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { cartUrl, localStorageKey } from "../utils/constant";
 
 function CartItem(props) {
-  const [productQuantity, setQuantity] = useState(0);
+  const [productQuantity, setProductQuantity] = useState(0);
+  const [productPrice, setProductPrice] = useState(0);
 
   const {
     setShowCart,
@@ -14,7 +15,7 @@ function CartItem(props) {
   const storageKey = localStorage.getItem(localStorageKey);
 
   const increaseQuantity = (productId) => {
-    setQuantity((prevProductQuantity) => prevProductQuantity + 1);
+    setProductQuantity((prevProductQuantity) => prevProductQuantity + 1);
     return fetch(`${cartUrl}/increase/${productId}`, {
       method: "PUT",
       headers: {
@@ -38,7 +39,7 @@ function CartItem(props) {
   };
 
   const decreaseQuantity = (productId) => {
-    setQuantity((prevProductQuantity) => prevProductQuantity - 1);
+    setProductQuantity((prevProductQuantity) => prevProductQuantity - 1);
     return fetch(`${cartUrl}/decrease/${productId}`, {
       method: "PUT",
       headers: {
@@ -88,7 +89,8 @@ function CartItem(props) {
   };
 
   useEffect(() => {
-    setQuantity(quantity);
+    setProductQuantity(quantity);
+    setProductPrice(price);
   }, []);
 
   if (!productObj) {
@@ -155,9 +157,9 @@ function CartItem(props) {
         </div>
         <div className="product-price flex-20">
           <p className="small-text">
-            ${price} * {quantity} ={" "}
+            ${productPrice} * {productQuantity} ={" "}
           </p>
-          <h3>${(price * quantity).toFixed(2)}</h3>
+          <h3>${(productPrice * productQuantity).toFixed(2)}</h3>
         </div>
       </div>
     </div>
